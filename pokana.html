@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>18th Birthday Invitation</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f6e7ff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .letter {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  #inviteCard {
+    display: none;
+    background: white;
+    padding: 40px;
+    border-radius: 0 0 15px 15px;
+    border: 2px solid #b347ff;
+    width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+    animation: pop 0.4s ease;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  #openBtn {
+    background: #b347ff;
+    color: white;
+  }
+  #yesBtn {
+    background: #4CAF50;
+    color: white;
+    transition: transform 0.3s ease;
+  }
+  #noBtn {
+    background: #ff4b4b;
+    color: white;
+  }
+  #yesScreen {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: pop 0.4s ease;
+  }
+  .car {
+    font-size: 50px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="letter" id="letter">
+    <h2>Отвори покана</h2>
+    <button id="openBtn">Отвори</button>
+  </div>
+
+  <div id="inviteCard">
+    <h2>Ще дойдеш ли на рождения ми ден?</h2>
+    <p><strong>Място:</strong> Ресторант "Житомир"</p>
+    <p><strong>Дата:</strong> 14.12.2025</p>
+    <p><strong>Час:</strong> 19:30</p>
+    <button id="yesBtn">Да</button>
+    <button id="noBtn">Не</button>
+  </div>
+
+  <div id="yesScreen">
+    <h1>YEYEYEYEYE!!!</h1>
+    <div class="car">🚗💨</div>
+  </div>
+
+<script>
+  const openBtn = document.getElementById('openBtn');
+  const letter = document.getElementById('letter');
+  const inviteCard = document.getElementById('inviteCard');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const yesScreen = document.getElementById('yesScreen');
+
+  openBtn.onclick = () => {
+    letter.style.display = 'none';
+    inviteCard.style.display = 'block';
+  };
+
+  let noClicks = 0;
+  noBtn.onclick = () => {
+    noClicks++;
+    const scale = 1 + noClicks * 0.2;
+    yesBtn.style.transform = `scale(${scale})`;
+  };
+
+  yesBtn.onclick = () => {
+    inviteCard.style.display = 'none';
+    yesScreen.style.display = 'block';
+  };
+</script>
+</body>
+</html>
